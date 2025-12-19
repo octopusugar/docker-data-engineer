@@ -57,11 +57,11 @@ def run(pg_user, pg_pass, pg_host, pg_port, pg_db, year, month, chunksize, targe
     engine = create_engine(f'postgresql://{pg_user}:{pg_pass}@{pg_host}:{pg_port}/{pg_db}')
 
     df_iter = pd.read_csv(
-    prefix + '/yellow_tripdata_2021-01.csv.gz',
+    url,
     dtype=dtype,
     parse_dates=parse_dates,
     iterator = True,
-    chunksize = 100000,
+    chunksize = chunksize,
     )
 
     first = True
